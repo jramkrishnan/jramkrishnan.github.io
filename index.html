@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jishnu Ramakrishnan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f8f6f3;
+            --bg-secondary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --accent: #2d5a4a;
+            --accent-light: #e8f0ed;
+            --border: #e0ddd8;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 70px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 28px;
+            border: 3px solid var(--bg-secondary);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .bio {
+            max-width: 620px;
+            margin: 0 auto 32px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            transition: all 0.25s ease;
+            background: var(--bg-secondary);
+        }
+
+        .contact-links a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* Experience Cards */
+        .experience-item {
+            background: var(--bg-secondary);
+            padding: 28px 32px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .experience-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .experience-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .experience-item ul {
+            margin-top: 14px;
+            padding-left: 20px;
+        }
+
+        .experience-item li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        /* Projects Section */
+        .project-item {
+            background: var(--bg-secondary);
+            padding: 28px 32px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-links a {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-left: 16px;
+            padding: 6px 14px;
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .project-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        /* Education */
+        .education-item {
+            background: var(--bg-secondary);
+            padding: 24px 28px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .education-degree {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .education-school {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .education-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .education-courses {
+            margin-top: 10px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: 24px 28px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-category p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .experience-header,
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-meta {
+                text-align: left;
+            }
+
+            .contact-links {
+                gap: 12px;
+            }
+
+            .contact-links a {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="images/profile.jpg" alt="Jishnu Ramakrishnan" class="profile-img" onerror="this.style.display='none'">
+            <h1>Jishnu Ramakrishnan</h1>
+            <p class="title">Business Analytics · Data Engineering · Machine Learning</p>
+            <p class="bio">
+                Graduate student in Business Analytics at UMass Amherst with hands-on experience in MLOps, 
+                data pipeline development, and predictive modeling. Focused on turning data into actionable 
+                insights through analytics engineering and machine learning.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:jramkrishnan@umass.edu">Email</a>
+                <a href="https://linkedin.com/in/jramkrishnan" target="_blank">LinkedIn</a>
+                <a href="https://github.com/jramkrishnan" target="_blank">GitHub</a>
+                <a href="resume.pdf" target="_blank">Resume</a>
+            </div>
+        </header>
+
+        <!-- Education -->
+        <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <p class="education-degree">Master of Science in Business Analytics</p>
+                <p class="education-school">University of Massachusetts Amherst, Isenberg School of Management</p>
+                <p class="education-meta">Expected May 2025 · GPA: 4.0/4.0</p>
+                <p class="education-courses"><strong>Relevant Coursework:</strong> Machine Learning, Data Mining, Financial Statement Analysis, Business Intelligence</p>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+            <h2>Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <p class="experience-title">MLOps Engineer</p>
+                        <p class="experience-company">CloudTies Solutions</p>
+                    </div>
+                    <p class="experience-meta">Location</p>
+                </div>
+                <ul>
+                    <li>Designed and deployed machine learning pipelines for production environments</li>
+                    <li>Implemented monitoring and automation for model performance tracking</li>
+                    <li>Collaborated with data science teams to streamline model deployment workflows</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <p class="experience-title">Data Analyst</p>
+                        <p class="experience-company">EY (Ernst & Young)</p>
+                    </div>
+                    <p class="experience-meta">Location</p>
+                </div>
+                <ul>
+                    <li>Built data transformation pipelines processing large-scale client datasets</li>
+                    <li>Developed SQL-based reporting solutions for financial analysis</li>
+                    <li>Automated data quality checks reducing manual validation time by 40%</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>Selected Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <p class="project-title">Seoul Bike Sharing Demand Prediction</p>
+                    <div class="project-links">
+                        <a href="https://github.com/jramkrishnan/seoul-bike-demand" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <p class="project-tech">Python, Scikit-learn, Pandas, Logistic Regression, Decision Trees</p>
+                <p class="project-description">
+                    Built a predictive model to forecast hourly bike rental demand in Seoul using weather and temporal data. 
+                    Applied logistic regression and decision trees on 8,700+ hourly records to identify key demand drivers 
+                    like temperature, time of day, and seasonality. Focused on practical business application—helping 
+                    bike-sharing operators maintain adequate supply during peak periods.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <p class="project-title">Face Detection Security System</p>
+                    <div class="project-links">
+                        <a href="https://github.com/jramkrishnan/Face-Detection-dlib" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <p class="project-tech">Python, dlib, OpenCV, HOG Features</p>
+                <p class="project-description">
+                    Developed a computer vision application for tracking individuals entering a community space. 
+                    Implemented the dlib library's HOG-based face detector with OpenCV for real-time image processing, 
+                    designed for security monitoring use cases. The system captures and logs entry events with 
+                    timestamp tracking.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages & Databases</h3>
+                    <p>Python, R, SQL, PostgreSQL, MySQL, MongoDB</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Analytics & ML</h3>
+                    <p>Pandas, NumPy, Scikit-learn, TensorFlow, Statistical Modeling, A/B Testing</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Engineering</h3>
+                    <p>ETL Pipelines, dbt, Airflow, Data Warehousing, Data Quality</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Visualization</h3>
+                    <p>Tableau, Power BI, Git, Docker, AWS, Excel (Advanced)</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Jishnu Ramakrishnan · Last updated: February 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
